@@ -13,7 +13,7 @@ class FilmItem extends React.Component {
       <View style={styles.main_container}>
         <Image
           style={styles.image}
-          source={film.poster_path}
+          source={{uri: "https://image.tmdb.org/t/p/w500/"+film.poster_path}}
         />
         <View style={styles.content_container}>
           <View style={styles.header_container}>

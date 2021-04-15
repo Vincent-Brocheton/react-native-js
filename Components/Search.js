@@ -3,6 +3,8 @@ import { StyleSheet, TextInput, View, Button, FlatList, Text } from 'react-nativ
 
 import films from '../Helpers/filmsData'
 import FilmItem from './FilmItem'
+import {getFilmsFromApiWithText} from '../api/TMDBApi'
+
 
 const styles = StyleSheet.create({
   textinput: {
@@ -20,14 +22,28 @@ const styles = StyleSheet.create({
 
 class Search extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this._films = [];
+  }
+
+  _loadFilms(){
+    getFilmsFromApiWithText("harry").then(data =>
+      {
+        this._films = data.results;
+        this.forceUpdate();
+      }
+    );
+  }
+
   render() {
     return (
       <View style={styles.margin_top}>
         <TextInput style={[styles.textinput, styles.margin_top]} placeholder='Titre du film' />
-        <Button title='Rechercher' onPress={() => {alert("push push");}} />
+        <Button title='Rechercher' onPress={() => this._loadFilms()} />
 
         <FlatList
-          data={films}
+          data={this._films}
           keyExtractor={(item) =>  item.id.toString()  }
           renderItem={( {item} ) => <FilmItem  film={item} /> }
           />
