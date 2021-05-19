@@ -41,6 +41,11 @@ class Search extends React.Component {
     this.state = { films : [], isLoading: false }
   }
 
+_displayDetailForFilm = (idFilm) => {
+  console.log("Displya detail "+ idFilm);
+  this.props.navigation.navigate('FilmDetail');
+}
+
 _searchFilms(){
   this.page = 0;
   this.totalPages=0;
@@ -92,7 +97,7 @@ _searchFilms(){
         <FlatList
           data={this.state.films}
           keyExtractor={(item) =>  item.id.toString()  }
-          renderItem={( {item} ) => <FilmItem  film={item} /> }
+          renderItem={( {item} ) => <FilmItem displayDetailForFilm={this._displayDetailForFilm} film={item} /> }
           onEndReachedThreshold={1}
           onEndReached={() => {
             //console.log("Limite atteinte")
