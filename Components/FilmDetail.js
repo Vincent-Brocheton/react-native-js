@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
   }
-})
+});
 
-export default FilmDetail
+export default FilmDetail;

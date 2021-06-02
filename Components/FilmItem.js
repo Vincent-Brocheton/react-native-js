@@ -9,7 +9,7 @@ class FilmItem extends React.Component {
 
 
   render() {
-    const {displayDetailForFilm, film} = this.props
+    const {displayDetailForFilm, film} = this.props;
     //console.log(film)
     return (
       <TouchableOpacity style={styles.main_container}
@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontSize: 14
   }
-})
+});
 
-export default FilmItem
+export default FilmItem;

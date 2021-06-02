@@ -15,18 +15,18 @@ const styles = StyleSheet.create({
     height:50
   },
   margin_top: {
-    marginTop: 20
+    marginTop: 5
   },
   loading_container: {
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 100,
+    top: 120,
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});
 
 
 class Search extends React.Component {
@@ -42,9 +42,8 @@ class Search extends React.Component {
   }
 
 _displayDetailForFilm = (idFilm) => {
-  console.log("Displya detail "+ idFilm);
   this.props.navigation.navigate('FilmDetail');
-}
+};
 
 _searchFilms(){
   this.page = 0;
@@ -85,7 +84,6 @@ _searchFilms(){
   }
 
   render() {
-    console.log(this.state.isLoading)
     return (
       <View style={styles.margin_top}>
         <TextInput style={[styles.textinput, styles.margin_top]}
@@ -114,4 +112,4 @@ _searchFilms(){
 
 }
 
-export default Search
+export default Search;
