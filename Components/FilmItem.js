@@ -2,15 +2,12 @@
 
 import React from 'react'
 import { StyleSheet, View, Text, Image,TouchableOpacity } from 'react-native'
-
 import {getImageFromApi} from '../api/TMDBApi'
 
 class FilmItem extends React.Component {
 
-
   render() {
     const {displayDetailForFilm, film} = this.props;
-    //console.log(film)
     return (
       <TouchableOpacity style={styles.main_container}
        onPress={() => displayDetailForFilm(film.id)}

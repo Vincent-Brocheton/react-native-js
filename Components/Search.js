@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, TextInput, View, Button, FlatList, Text, ActivityIndicator } from 'react-native';
-
-import films from '../Helpers/filmsData'
 import FilmItem from './FilmItem'
 import {getFilmsFromApiWithText} from '../api/TMDBApi'
 
@@ -33,7 +31,6 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    //  this._films = [];
     // utilisation de state
     this.searchedText =  "";
     this.page = 0; // page courante
@@ -42,7 +39,7 @@ class Search extends React.Component {
   }
 
 _displayDetailForFilm = (idFilm) => {
-  this.props.navigation.navigate('FilmDetail');
+  this.props.navigation.navigate('FilmDetail', {idFilm : idFilm});
 };
 
 _searchFilms(){
@@ -60,7 +57,6 @@ _searchFilms(){
       this.page = data.page;
       this.totalPages = data.total_pages;
       this.setState({
-      //  films: this.state.films.concat(data.results),
         films: [...this.state.films, ...data.results],
         isLoading: false
         })
@@ -98,7 +94,6 @@ _searchFilms(){
           renderItem={( {item} ) => <FilmItem displayDetailForFilm={this._displayDetailForFilm} film={item} /> }
           onEndReachedThreshold={1}
           onEndReached={() => {
-            //console.log("Limite atteinte")
             if (this.page < this.totalPages){
               this._loadFilms()
             }
