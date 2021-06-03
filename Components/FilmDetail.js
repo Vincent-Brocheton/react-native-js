@@ -2,6 +2,7 @@ import React from 'react'
 import {StyleSheet, View, Text, ScrollView, Image} from 'react-native'
 import {getFilmDetailFromApi, getImageFromApi} from "../api/TMDBApi";
 import moment from "moment";
+import {connect} from "react-redux";
 
 class FilmDetail extends React.Component {
     constructor(props) {
@@ -18,7 +19,6 @@ class FilmDetail extends React.Component {
     }
 
     _loadFilm(id) {
-        console.log(id);
         getFilmDetailFromApi(id).then(
             data => {
                 this.setState({film: data})
@@ -45,6 +45,7 @@ class FilmDetail extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <View style={styles.main_container}>
                 {this._displayFilm()}
@@ -71,4 +72,6 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FilmDetail;
+const mapStateToProps = (state) => {return state};
+
+export default connect(mapStateToProps)(FilmDetail);
