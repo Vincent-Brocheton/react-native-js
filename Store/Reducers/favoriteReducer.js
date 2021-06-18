@@ -9,7 +9,7 @@ function toggleFavorite(state = initialState, action){
                 //film déja dans les favoris
                 nextState = {
                     ...state,
-                    favoritesFilm: state.favoritesFilm.filter((index) => index !== isFavorite)
+                    favoritesFilm: state.favoritesFilm.filter((i,index) => index !== isFavorite)
                 }
             }
             else {
@@ -26,4 +26,4 @@ function toggleFavorite(state = initialState, action){
     }
 }
 
-export default toggleFavorite();
+export default toggleFavorite
